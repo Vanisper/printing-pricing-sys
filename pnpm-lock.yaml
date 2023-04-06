@@ -1,6 +1,5 @@
 lockfileVersion: 5.4
 
-
 specifiers:
   '@element-plus/icons-vue': ^2.1.0
   '@types/node': ^18.15.7
