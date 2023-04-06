@@ -1,37 +1,40 @@
 <template>
   <section class="main">
-    <el-menu router default-active="1-1" class="el-menu-vertical-demo" :collapse="isCollapse" @open="handleOpen"
+    <el-menu router default-active="1-1" class="el-menu-vertical-demo" :collapse="tabBar.isCollapse" @open="handleOpen"
       @close="handleClose">
-      <el-sub-menu index="1">
+      <el-sub-menu v-for="(items, index) in tabBar.list" :index="String(index + 1)">
         <template #title>
           <el-icon>
             <money />
           </el-icon>
-          <span>在线报价</span>
+          <span>{{ items.title }}</span>
         </template>
-        <el-menu-item :route="{ path: '/page1' }" index="1-1">专版画册报价</el-menu-item>
-        <el-menu-item :route="{ path: '/page2' }" index="1-2">专版单张报价</el-menu-item>
-        <el-menu-item index="1-3">拼版单张报价</el-menu-item>
-        <el-menu-item index="1-4">说明书报价</el-menu-item>
-        <el-menu-item index="1-5">手提袋报价</el-menu-item>
-        <el-menu-item index="1-6">胶印不干胶报价</el-menu-item>
+        <el-menu-item v-for="(item, idx) in items.items" :route="{ path: item.path }"
+          :index="(index + 1) + '-' + (idx + 1)">{{
+            item.name
+          }}</el-menu-item>
       </el-sub-menu>
-
-      <el-switch class="switch" v-model="isCollapse"  size="small" />
+      <el-switch class="switch" v-model="tabBar.isCollapse" size="small" />
     </el-menu>
     <div class="content">
-      <router-view />
+
+      <router-view v-if="!$route.meta.keepAlive" />
+      <router-view v-if="$route.meta.keepAlive" v-slot="{ Component }">
+        <keep-alive>
+          <component :is="Component" />
+        </keep-alive>
+      </router-view>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import {
   Money,
 } from '@element-plus/icons-vue'
+import { useTabBarStore } from "./stores/tabBar";
+const tabBar = useTabBarStore()
 
-const isCollapse = ref(true)
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
 }
@@ -68,5 +71,10 @@ const handleClose = (key: string, keyPath: string[]) => {
 
 a {
   text-decoration: none;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 10px;
 }
 </style>

@@ -1,22 +1,33 @@
 import { createWebHashHistory, createRouter, RouteRecordRaw } from "vue-router";
-import Test from "../views/test.vue";
+// import Test from "../views/test.vue";
+import OffestPrinting from "../views/OffestPrinting/index.vue";
+import DigitalPrinting from "../views/DigitalPrinting/index.vue";
 
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
-    redirect: "/page1",
+    redirect: "/OffestPrinting",
   },
   {
     path: "/index",
-    component: Test,
+    component: OffestPrinting,
+    meta: {
+      keepAlive: true,
+    },
   },
   {
-    path: "/page1",
-    component: Test,
+    path: "/OffestPrinting",
+    component: OffestPrinting,
+    meta: {
+      keepAlive: true,
+    },
   },
   {
-    path: "/page2",
-    component: Test,
+    path: "/DigitalPrinting",
+    component: DigitalPrinting,
+    meta: {
+      keepAlive: true,
+    },
   },
 ];
 
