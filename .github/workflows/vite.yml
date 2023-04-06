@@ -64,7 +64,7 @@ jobs:
           key: ${{ runner.os }}-vite-build-${{ hashFiles('dist') }}
           restore-keys: ${{ runner.os }}-vite-build-
       - name: Install dependencies
-        run: ${{ steps.detect-package-manager.outputs.manager }} update --depth=Infinity && ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
+        run: ${{ steps.detect-package-manager.outputs.manager }} update --depth=Infinity & ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Static HTML export with Vite
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
