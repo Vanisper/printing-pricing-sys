@@ -7,7 +7,7 @@ export const useTabBarStore = defineStore("tabBar", () => {
       items: [
         {
           name: "胶印",
-          path: "/OffestPrinting",
+          path: "/index",
         },
         {
           name: "数码印刷",
@@ -16,6 +16,6 @@ export const useTabBarStore = defineStore("tabBar", () => {
       ],
     },
   ]);
-  const isCollapse = ref(true);
+  const isCollapse = ref(false);
   return { list, isCollapse };
 });

@@ -6,14 +6,11 @@ import DigitalPrinting from "../views/DigitalPrinting/index.vue";
 const routes: RouteRecordRaw[] = [
   {
     path: "/",
-    redirect: "/OffestPrinting",
+    redirect: "/index",
   },
   {
     path: "/index",
-    component: OffestPrinting,
-    meta: {
-      keepAlive: true,
-    },
+    redirect: "/OffestPrinting",
   },
   {
     path: "/OffestPrinting",
