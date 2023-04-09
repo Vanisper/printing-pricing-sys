@@ -2,22 +2,34 @@
 import OrderInfo from "./include/order-info.vue";
 import ProductInfo from "./include/product-info.vue";
 import PriceInfo from "./include/price-info/index.vue";
+import { useAppStores } from "../../stores/app";
+import { useRoute } from "vue-router";
+
+onMounted(() => {
+    if (!useRoute().meta.keepAlive) {
+        const t = setTimeout(() => {
+            document.title = "胶版印刷"
+            clearTimeout(t)
+        })
+    }
+})
+
+onActivated(() => {
+    document.title = "胶版印刷"
+})
+
+onDeactivated(() => {
+    useAppStores().setDefaultTitle()
+})
+
 </script>
 
 <template>
-    <h1>胶版印刷</h1>
-    <el-divider />
-    <div class="">
-        <order-info />
-    </div>
-    <el-divider />
-    <div>
-        <product-info />
-    </div>
-    <el-divider />
-    <div>
-        <price-info />
-    </div>
+    <order-info />
+
+    <product-info />
+
+    <price-info />
 </template>
 
 <style lang="less" scoped>

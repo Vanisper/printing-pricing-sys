@@ -37,7 +37,9 @@ const operator = ref([
 </script>
 
 <template>
-    <h3 style="margin-bottom: 20px;">订单信息</h3>
+    <el-divider content-position="left">
+        <h3>订单信息</h3>
+    </el-divider>
     <el-form :inline="true" :model="form" label-width="120px">
         <el-form-item :label="Form.orderID">
             <el-input v-model="form.orderID" />

@@ -6,7 +6,9 @@ import PostPress from "./components/post-press.vue";
 </script>
 
 <template>
-    <h3>报价</h3>
+    <el-divider content-position="left">
+        <h3>报价</h3>
+    </el-divider>
     <cover />
     <content />
     <post-press />

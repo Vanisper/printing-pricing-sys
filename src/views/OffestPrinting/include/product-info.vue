@@ -24,7 +24,9 @@ const productType = ref([
 </script>
 
 <template>
-    <h3>产品信息</h3>
+    <el-divider content-position="left">
+        <h3>产品信息</h3>
+    </el-divider>
     <el-form inline :model="form" label-width="120px">
         <el-form-item :label="Form.productName">
             <el-input v-model="form.productName" />

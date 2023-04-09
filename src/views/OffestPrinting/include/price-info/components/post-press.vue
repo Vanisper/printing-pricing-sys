@@ -12,11 +12,11 @@ type FormValues = `${Form}`; // 获取 Form 的所有值
 type FormObject = Record<FormKeys, string | number | boolean>; // 将键名转换为一个对象类型，值为 string
 const form = reactive<FormObject>({
     binding: "",
-    lamination: "",
-    glazing: "",
-    bronzing: "",
-    embossing: "",
-    framing: "",
+    lamination: false,
+    glazing: false,
+    bronzing: false,
+    embossing: false,
+    framing: false,
 })
 
 const binding = ref([
@@ -26,7 +26,7 @@ const binding = ref([
 </script>
 
 <template>
-    <h5>印后加工</h5>
+    <h5 style="margin-left: 30px;">印后加工</h5>
     <el-form inline :model="form" label-width="120px">
         <el-form-item :label="Form.binding">
             <el-select v-model="form.binding" :placeholder="Form.binding">
@@ -34,19 +34,34 @@ const binding = ref([
             </el-select>
         </el-form-item>
         <el-form-item :label="Form.lamination">
-            <el-input v-model="form.lamination"></el-input>
+            <el-radio-group v-model="form.lamination">
+                <el-radio :label="true">是</el-radio>
+                <el-radio :label="false">否</el-radio>
+            </el-radio-group>
         </el-form-item>
         <el-form-item :label="Form.glazing">
-            <el-input v-model="form.glazing"></el-input>
+            <el-radio-group v-model="form.glazing">
+                <el-radio :label="true">是</el-radio>
+                <el-radio :label="false">否</el-radio>
+            </el-radio-group>
         </el-form-item>
         <el-form-item :label="Form.bronzing">
-            <el-input v-model="form.bronzing"></el-input>
+            <el-radio-group v-model="form.bronzing">
+                <el-radio :label="true">是</el-radio>
+                <el-radio :label="false">否</el-radio>
+            </el-radio-group>
         </el-form-item>
         <el-form-item :label="Form.embossing">
-            <el-input v-model="form.embossing"></el-input>
+            <el-radio-group v-model="form.embossing">
+                <el-radio :label="true">是</el-radio>
+                <el-radio :label="false">否</el-radio>
+            </el-radio-group>
         </el-form-item>
         <el-form-item :label="Form.framing">
-            <el-input v-model="form.framing"></el-input>
+            <el-radio-group v-model="form.framing">
+                <el-radio :label="true">是</el-radio>
+                <el-radio :label="false">否</el-radio>
+            </el-radio-group>
         </el-form-item>
     </el-form>
 </template>

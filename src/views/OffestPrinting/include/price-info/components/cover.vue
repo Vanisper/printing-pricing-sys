@@ -31,8 +31,8 @@ const colorSystem = ref([
 </script>
 
 <template>
-    <h5>封面印刷</h5>
-    <el-form inline model="form" label-width="120px">
+    <h5 style="margin-left: 30px;">封面印刷</h5>
+    <el-form inline :model="form" label-width="120px">
         <el-form-item :label="Form.size">
             <el-input-number controls-position="right" v-model="form.size" type="number" :min="0">
             </el-input-number>
