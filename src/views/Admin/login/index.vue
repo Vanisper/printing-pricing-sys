@@ -37,7 +37,7 @@
 import { useRouter } from 'vue-router';
 
 const wallpaperCounter = computed(() => Math.floor(Math.random() * 11));
-const wallpaperPath = computed(() => "/wallpaper/" + wallpaperCounter.value + ".jpg");
+const wallpaperPath = computed(() => "./wallpaper/" + wallpaperCounter.value + ".jpg");
 const router = useRouter()
 const id = ref("admin");
 const passwd = ref("admin");
