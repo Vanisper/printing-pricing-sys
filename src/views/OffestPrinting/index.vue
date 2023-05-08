@@ -3,7 +3,7 @@ import OrderInfo from "./include/order-info.vue";
 import ProductInfo from "./include/product-info.vue";
 import PriceInfo from "./include/price-info/index.vue";
 import { useAppStores } from "../../stores/app";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 onMounted(() => {
     if (!useRoute().meta.keepAlive) {
@@ -15,7 +15,12 @@ onMounted(() => {
 })
 
 onActivated(() => {
-    document.title = "胶版印刷"
+    document.title = "胶版印刷";
+    if (!(localStorage.getItem("isLogin") === "true")) {
+        useRouter().push({
+            path: "/admin/login"
+        })
+    }
 })
 
 onDeactivated(() => {
@@ -26,9 +31,7 @@ onDeactivated(() => {
 
 <template>
     <order-info />
-
     <product-info />
-
     <price-info />
 </template>
 

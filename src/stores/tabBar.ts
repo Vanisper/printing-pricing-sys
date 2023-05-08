@@ -7,11 +7,11 @@ export const useTabBarStore = defineStore("tabBar", () => {
       items: [
         {
           name: "胶印",
-          path: "/index",
+          path: "/admin/OffestPrinting",
         },
         {
           name: "数码印刷",
-          path: "/DigitalPrinting",
+          path: "/admin/DigitalPrinting",
         },
       ],
     },

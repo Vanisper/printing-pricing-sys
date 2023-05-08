@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import { useAppStores } from "../../stores/app";
 
 onMounted(() => {
@@ -12,7 +12,12 @@ onMounted(() => {
 })
 
 onActivated(() => {
-    document.title = "数码印刷"
+    document.title = "数码印刷";
+    if (!(localStorage.getItem("isLogin") === "true")) {
+        useRouter().push({
+            path: "/admin/login"
+        })
+    }
 })
 
 onDeactivated(() => {
