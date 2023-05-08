@@ -17,11 +17,11 @@
                     <!-- <div class="group">
                     <input placeholder="‎" type="email" id="email" name="email" :required="undefined">
                     <label for="email">Email</label>
-                </div> -->
+                    </div> -->
                     <!-- <div class="group">
                     <textarea placeholder="‎" id="comment" name="comment" rows="5" :required="undefined"></textarea>
                     <label for="comment">Comment</label>
-                </div> -->
+                    </div> -->
                     <button @click="submit">登录</button>
                 </div>
             </div>
@@ -50,17 +50,27 @@ const check = () => {
 
 const submit = () => {
     if (check()) {
-        localStorage.setItem("isLogin", "true")
+        localStorage.setItem("isLogin", "true");
         router.push({
             path: "/admin/OffestPrinting"
         })
     } else {
         localStorage.removeItem("isLogin")
-        alert("账号或密码错误")
+        ElMessage.error('账号或密码错误')
     }
 }
 onMounted(() => {
-    if (check()) {
+    if (localStorage.getItem("isLogin") === "true") {
+        router.push({
+            path: "/admin/OffestPrinting"
+        })
+    } else {
+        localStorage.removeItem("isLogin")
+    }
+})
+
+onActivated(() => {
+    if (localStorage.getItem("isLogin") === "true") {
         router.push({
             path: "/admin/OffestPrinting"
         })
@@ -78,12 +88,48 @@ onMounted(() => {
     width: 100%;
     position: relative;
     -webkit-user-drag: none;
+    overflow: hidden;
+
+    &:hover {
+        .wallpaper {
+            z-index: 0;
+        }
+    }
 
     .wallpaper {
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
         flex-grow: 1;
+        box-sizing: border-box;
+        z-index: -1;
+        // background: rgba(217, 217, 217, 0.58);
+        border: 1px solid white;
+        backdrop-filter: blur(6px);
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.5s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+        font-weight: bolder;
+        color: black;
+
+        &:hover {
+            border-radius: 17px;
+            border: 1px solid red;
+            border-right: none;
+            transform: scale(1.05);
+            box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+        }
+
+        &:active {
+            border-radius: 17px;
+            border: 1px solid red;
+            transform: scale(0.95) rotateZ(1.7deg);
+            box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+        }
     }
 
     .content {
@@ -95,6 +141,9 @@ onMounted(() => {
         height: 100%;
         flex-direction: column;
         width: calc(100% - 61.8%);
+
+        background: rgb(236, 236, 236);
+        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     }
 
     @media (max-width: 1080px) {

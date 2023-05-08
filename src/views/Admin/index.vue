@@ -14,7 +14,8 @@
                         item.name
                     }}</el-menu-item>
             </el-sub-menu>
-            <el-switch class="switch" v-model="tabBar.isCollapse" size="small" />
+            <my-button1 :is-checked="tabBar.isCollapse" style="display: flex;justify-content: center;margin-top: auto;" />
+            <!-- <el-switch class="switch" v-model="tabBar.isCollapse" size="small" /> -->
             <el-tooltip effect="dark" content="退出登录" placement="right">
                 <el-button @click="loginOut" type="danger" style="width: fit-content;margin: 0 auto 30px auto;"
                     :icon="SwitchButton" circle />
@@ -40,6 +41,7 @@ import {
 } from '@element-plus/icons-vue'
 import { useTabBarStore } from "../../stores/tabBar";
 import { useRouter } from 'vue-router';
+import MyButton1 from "../../components/buttons/button1.vue";
 const tabBar = useTabBarStore();
 const router = useRouter()
 
