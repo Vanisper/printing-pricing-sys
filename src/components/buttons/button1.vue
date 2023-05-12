@@ -1,31 +1,25 @@
 <template>
-    <label><input ref="checkbox" value="on" name="dummy" :checked="isChecked" type="checkbox" class="bubble"></label>
+    <label><input ref="checkbox" value="on" name="dummy" @change="handleSwitch" :checked="modelValue" type="checkbox"
+            class="bubble"></label>
 </template>
 <script lang="ts" setup>
 const props = defineProps({
-    isChecked: {
+    modelValue: {
         type: Boolean,
         default: false
     }
 })
 
-const emits = defineEmits(["switch"]);
-const handleSwitch = (params: boolean) => {
-    emits("switch", {
-        name: "",
-        value: ""
-    })
+const emits = defineEmits(["update:modelValue"]);
+const handleSwitch = () => {
+    emits("update:modelValue", !props.modelValue)
 }
 const checkbox = ref<HTMLInputElement>()
 
-watch(props, (value) => {
+// 因为props.modelValue、是非引用类型，改变时，需要监听，对响应式数据重新赋值
+watch(() => props.modelValue, (value) => {
     console.log(value)
-},
-    {
-        immediate: true,
-        deep: true
-    }
-)
+})
 </script>
 
 <style lang="less" scoped>

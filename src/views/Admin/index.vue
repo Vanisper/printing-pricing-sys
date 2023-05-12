@@ -14,7 +14,8 @@
                         item.name
                     }}</el-menu-item>
             </el-sub-menu>
-            <my-button1 :is-checked="tabBar.isCollapse" style="display: flex;justify-content: center;margin-top: auto;" />
+            <my-button1 v-model="tabBar.isCollapse"
+                style="display: flex;justify-content: center;margin-top: auto;margin-bottom: 20px;" />
             <!-- <el-switch class="switch" v-model="tabBar.isCollapse" size="small" /> -->
             <el-tooltip effect="dark" content="退出登录" placement="right">
                 <el-button @click="loginOut" type="danger" style="width: fit-content;margin: 0 auto 30px auto;"
