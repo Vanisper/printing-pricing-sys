@@ -41,12 +41,29 @@ const wallpaperPath = computed(() => "./wallpaper/" + wallpaperCounter.value + "
 const router = useRouter()
 const id = ref("admin");
 const passwd = ref("admin");
+const lists = [
+    {
+        id: "admin",
+        passwd: "admin",
+    },
+    {
+        id: "test",
+        passwd: "test",
+    }
+]
 
 const $id = ref<HTMLInputElement>()
 const $passwd = ref<HTMLInputElement>()
 const check = () => {
-    return (id.value === "admin" && passwd.value === "admin") || (localStorage.getItem("isLogin") === "true" ? true : false)
-}
+    for (let i = 0; i < lists.length; i++) {
+        if (id.value === lists[i].id && passwd.value === lists[i].passwd) {
+            return true; // 如果校验通过，则返回 true
+        }
+    }
+
+    // 如果列表中没有匹配的对象，则检查本地存储中的登录状态
+    return (localStorage.getItem("isLogin") === "true") ? true : false;
+};
 
 const submit = () => {
     if (check()) {
