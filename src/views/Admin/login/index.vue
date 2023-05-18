@@ -1,7 +1,7 @@
 <template>
     <div class="box">
-        <div class="wallpaper" :data-background-image="wallpaperPath" :style="{ backgroundImage: `url(${wallpaperPath})` }">
-        </div>
+        <!-- <div class="wallpaper" :data-background-image="wallpaperPath" :style="{ backgroundImage: `url(${wallpaperPath})` }">
+        </div> -->
         <div class="content">
             <div class="card">
                 <span class="title">印刷计价系统-管理员后台</span>
@@ -157,7 +157,8 @@ onActivated(() => {
         align-items: center;
         height: 100%;
         flex-direction: column;
-        width: calc(100% - 61.8%);
+        // width: calc(100% - 61.8%);
+        width: 100%;
 
         background: rgb(236, 236, 236);
         box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
