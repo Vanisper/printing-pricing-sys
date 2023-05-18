@@ -35,8 +35,8 @@ Object.keys(form).forEach(v => {
 })
 
 const productType = ref([
-    { label: "分类1", value: "001" },
-    { label: "分类2", value: "002" },
+    { label: "胶版印刷", value: "001" },
+    { label: "数码印刷", value: "002" },
 ])
 watchEffect(() => {
     form.productTypeName = productType.value.find(v => v.value == form.productType)?.label || ""
